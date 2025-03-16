@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Pemesanan Makanan</title>
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-family: Arial, sans-serif;
+      }
+      table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Form Pemesanan Makanan</h2>
+      <form id="orderForm">
+        <table>
+          <thead>
+            <tr>
+              <th>Nama Makanan</th>
+              <th>Harga</th>
+              <th>Jumlah</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nasi Goreng</td>
+              <td>Rp 10.000</td>
+              <td><input type="number" id="nasiGoreng" value="0" min="0" /></td>
+            </tr>
+            <tr>
+              <td>Ayam Goreng</td>
+              <td>Rp 12.000</td>
+              <td><input type="number" id="ayamGoreng" value="0" min="0" /></td>
+            </tr>
+            <tr>
+              <td>Es Teh</td>
+              <td>Rp 2.000</td>
+              <td><input type="number" id="esTeh" value="0" min="0" /></td>
+            </tr>
+            <tr>
+              <td>Kopi</td>
+              <td>Rp 3.000</td>
+              <td><input type="number" id="esTeh" value="0" min="0" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" onclick="hitungTotal()">Hitung Total</button>
+      </form>
+      <h3>Total: <span id="total">Rp 0</span></h3>
+    </div>
+
+    <script>
+      function hitungTotal() {
+        const hargaNasiGoreng = 10000;
+        const hargaAyamGoreng = 12000;
+        const hargaEsTeh = 2000;
+        const hargaKopi = 3000;
+
+        const jumlahNasiGoreng = document.getElementById("nasiGoreng").value;
+        const jumlahAyamGoreng = document.getElementById("ayamGoreng").value;
+        const jumlahEsTeh = document.getElementById("esTeh").value;
+        const jumlahKopi = document.getElementById("kopi").value;
+
+        const total =
+          jumlahNasiGoreng * hargaNasiGoreng +
+          jumlahAyamGoreng * hargaAyamGoreng +
+          jumlahEsTeh * hargaEsTeh +
+          jumlahKopi * hargaKopi;
+
+        document.getElementById("total").textContent =
+          "Rp " + total.toLocaleString("id-ID");
+      }
+    </script>
+  </body>
+</html>
